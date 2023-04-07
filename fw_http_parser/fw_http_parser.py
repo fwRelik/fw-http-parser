@@ -23,6 +23,9 @@ class HttpParser:
 	def content_type(self):
 		return get_field('Content-Type', self.data)
 
+	def get_field_by_name(self, name):
+		return get_field(name, self.data)
+
 
 def get_field(name, data) -> str | None:
 	value = re.search(rf'{name}:\s(.+?)\s', data)

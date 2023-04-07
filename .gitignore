@@ -1,3 +1,6 @@
 /.idea
 /dist
 /build
+/venv
+
+/fw_http_parser.egg-info
