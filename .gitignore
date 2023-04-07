@@ -4,3 +4,4 @@
 /venv
 
 /fw_http_parser.egg-info
+/fw_http_parser/__pycache__

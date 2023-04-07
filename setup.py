@@ -5,7 +5,7 @@ with open("README.md", "r") as md:
 
 setuptools.setup(
 	name="fw-http-parser",
-	version="0.1.2",
+	version="0.2.1",
 	author="fwRelik",
 	author_email="relik.fw@gmail.com",
 	description="Parsing data from a socket connection",
