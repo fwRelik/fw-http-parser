@@ -2,6 +2,10 @@
 /dist
 /build
 /venv
+/data
 
 /fw_http_parser.egg-info
 /fw_http_parser/__pycache__
+
+# temporary
+/fw_http_parser/__main__.py
