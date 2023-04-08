@@ -42,7 +42,7 @@ class HttpParser:
 				continue
 
 			key, value = curr.split(':', 1)
-			self._headers.append((key, value))
+			self._headers.append((key, value.strip()))
 
 		return self._headers
 
