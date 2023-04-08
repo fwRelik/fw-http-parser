@@ -5,6 +5,7 @@ class HttpParser:
 
 	def __init__(self, data):
 		self.data = data
+		self._headers = []
 
 	@property
 	def body(self):
@@ -29,8 +30,21 @@ class HttpParser:
 	def content_type(self):
 		return get_field('Content-Type', self.data)
 
-	def get_field_by_name(self, name):
-		return get_field(name, self.data)
+	@property
+	def headers(self):
+		idx = self.data.find('\r\n\r\n')
+		lines = [line for line in self.data[:idx].split("\r\n")]
+
+		while len(lines):
+			curr = lines.pop(0)
+
+			if curr.find(':') < 0:
+				continue
+
+			key, value = curr.split(':', 1)
+			self._headers.append((key, value))
+
+		return self._headers
 
 
 def get_field(name, data) -> str | None:
