@@ -9,7 +9,7 @@ class HttpParser:
 
 	@property
 	def body(self):
-		body = re.search('({.+?})', self.data)
+		body = re.search(r'({[\s\S]+?})', self.data)
 		return body.group(0) if body is not None else None
 
 	@property
@@ -32,7 +32,7 @@ class HttpParser:
 
 	@property
 	def headers(self):
-		idx = self.data.find('\r\n\r\n')
+		idx = self.data.find("\r\n\r\n")
 		lines = [line for line in self.data[:idx].split("\r\n")]
 
 		while len(lines):
@@ -45,6 +45,10 @@ class HttpParser:
 			self._headers.append((key, value.strip()))
 
 		return self._headers
+
+	@property
+	def route(self):
+		return self.data.split(' ')[1]
 
 
 def get_field(name, data) -> str | None:
